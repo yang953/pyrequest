@@ -8,7 +8,7 @@ from db_fixture import test_data
 
 # 指定测试用例为当前文件夹下的 interface 目录
 test_dir = './interface'
-testsuit = defaultTestLoader.discover(test_dir, pattern='*_test.py')
+testsuit = defaultTestLoader.discover(test_dir, pattern='*_test.py') # 查找interface目录下，匹配所有文件名以"_test.py"结尾的测试文件
 
 
 if __name__ == "__main__":

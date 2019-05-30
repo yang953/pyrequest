@@ -10,7 +10,7 @@ class AddGuessTest(unittest.TestCase):
     ''' 添加嘉宾 '''
 
     def setUp(self):
-        self.base_url = "http://127.0.0.1:8000/api/add_guest/"
+        self.base_url = "http://127.0.0.1:8001/api/add_guest/"
 
     def tearDown(self):
         print(self.result)
@@ -57,7 +57,7 @@ class AddGuessTest(unittest.TestCase):
 
     def test_add_guest_phone_repeat(self):
         ''' phone=13800113001 手机号重复 '''
-        payload = {'eid':1,'realname':'tom','phone':13511001100}
+        payload = {'eid':1,'realname':'tom','phone':13511001101}
         r = requests.post(self.base_url,data=payload)
         self.result = r.json()
         self.assertEqual(self.result['status'], 10026)

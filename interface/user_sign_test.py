@@ -10,7 +10,7 @@ class UserSignTest(unittest.TestCase):
     ''' 用户签到 '''
 
     def setUp(self):
-        self.base_url = "http://127.0.0.1:8000/api/user_sign/"
+        self.base_url = "http://127.0.0.1:8001/api/user_sign/"
 
     def tearDown(self):
         print(self.result)
@@ -33,7 +33,7 @@ class UserSignTest(unittest.TestCase):
 
     def test_user_sign_status_close(self):
         ''' eid=3 发布会状态关闭 '''
-        payload = {'eid':3,'phone':13711001100}
+        payload = {'eid':3,'phone':13511001103}
         r = requests.post(self.base_url,data=payload)
         self.result = r.json()
         self.assertEqual(self.result['status'], 10023)
@@ -73,7 +73,7 @@ class UserSignTest(unittest.TestCase):
 
     def test_user_sign_success(self):
         ''' 签到成功 '''
-        payload = {'eid':1,'phone':13511001100}
+        payload = {'eid':1,'phone':13511001199}
         r = requests.post(self.base_url,data=payload)
         self.result = r.json()
         self.assertEqual(self.result['status'], 200)

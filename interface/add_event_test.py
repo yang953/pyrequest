@@ -10,7 +10,7 @@ class AddEventTest(unittest.TestCase):
     ''' 添加发布会 '''
 
     def setUp(self):
-        self.base_url = "http://127.0.0.1:8000/api/add_event/"
+        self.base_url = "http://127.0.0.1:8001/api/add_event/"
 
     def tearDown(self):
         print(self.result)
@@ -19,9 +19,9 @@ class AddEventTest(unittest.TestCase):
         ''' 所有参数为空 '''
         payload = {'eid':'','':'','limit':'','address':"",'start_time':''}
         r = requests.post(self.base_url, data=payload)
-        self.result = r.json()
-        self.assertEqual(self.result['status'], 10021)
-        self.assertEqual(self.result['message'], 'parameter error')
+        self.result = r.json() # 将返回结果转换成json
+        self.assertEqual(self.result['status'], 10021) # 判断结果状态是否是10021
+        self.assertEqual(self.result['message'], 'paramter error') # 判断返回信息是否正确
 
     def test_add_event_eid_exist(self):
         ''' id已经存在 '''
@@ -33,7 +33,7 @@ class AddEventTest(unittest.TestCase):
 
     def test_add_event_name_exist(self):
         ''' 名称已经存在 '''
-        payload = {'eid':11,'name':'红米Pro发布会','limit':2000,'address':"深圳宝体",'start_time':'2017'}
+        payload = {'eid':12,'name':'一加4手机发布会','limit':2000,'address':"深圳宝体",'start_time':'2017'}
         r = requests.post(self.base_url,data=payload)
         self.result = r.json()
         self.assertEqual(self.result['status'], 10023)
